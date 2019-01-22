@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 22 10:46:15 2019
-
-@author: User
-"""
-
 import pyqrcode
 from PIL import Image
 
