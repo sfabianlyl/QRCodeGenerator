@@ -18,11 +18,16 @@ width,height = im.size
 
 #open logo image, crop and paste logo
 logo=Image.open(logoString)
-leftUpBorder = int((width-logoWidth)/2)
-rightBottomBorder = int((width+logoWidth)/2)
-box=(leftUpBorder,leftUpBorder,rightBottomBorder,rightBottomBorder) #logo placement. take (qrcode size-logo size)/2 , (qrcode size+logo size)/2
+a,b=logo.size
+logoRatio=a/b
+logoHeight=int(logoWidth/logoRatio)
+leftBorder = int((width-logoWidth)/2)
+upBorder= int((height-logoHeight)/2)
+rightBorder = int((width+logoWidth)/2)
+bottomBorder=int((height+logoHeight)/2)
+box=(leftBorder,upBorder,rightBorder,bottomBorder) #logo placement. take (qrcode size-logo size)/2 , (qrcode size+logo size)/2
 im.crop(box)
-logo= logo.resize((logoWidth,logoWidth)) #set logo size
+logo= logo.resize((logoWidth,logoHeight)) #set logo size
 im.paste(logo,box) #place logo
 #im.show()
 im.save(out)
